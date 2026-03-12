@@ -1,43 +1,53 @@
-//cash out logic
-document.getElementById("CashOut-btn").addEventListener("click",function()
-
-{
-const agentNumber= document.getElementById("Agent-number");
-const cashoutNumber =agentNumber.value;
-console.log(cashoutNumber);
-if(cashoutNumber.length != 11){
-    alert("invalid agent number. please give a valid number");
-    return;
-}
-const amountNumberInput =document.getElementById("Amount-number");
-const amountNumber = amountNumberInput.value;
-console.log(amountNumber);
-
-const balanceElement =document.getElementById("balanace");
-const balanance =balanceElement.innerText;
-console.log(balanance)
-
-const newBalance = Number(balanance) - Number(amountNumber);
-
-if( newBalance< 0){
-
-    alert("invalid amount");
-    return ;
-}
 
 
 
-const pinNumberInput =document.getElementById("Pin-number");
-const pinNumber =pinNumberInput.value;
-if(pinNumber == "1234"){
-alert("congratulations! Cash out successful");
-console.log(newBalance);
- balanceElement.innerText =newBalance;
+// function for input value
+function getInputValue(id) {
 
-}
-else{
-    alert("invalid pin");
-    return
-}
+    const input = document.getElementById(id);
+    const value = input.value;
+    return value;
+
+
+
+};
+
+//cashout
+document.getElementById("CashOut-btn").addEventListener("click", function () {
+    const agentNumber = getInputValue("Agent-number");
+
+    if (agentNumber.length !=11) {
+        alert("Enter a valid agent number");
+        return;
+    }
+
+    const amountNumber = getInputValue("Amount-number");
+    //balance
+    const balanceElement = document.getElementById("balanace");
+    const balance = balanceElement.innerText;
+    const newBalance = Number(balance) - Number(amountNumber);
+    
+        if (newBalance < 0) {
+            alert("invalid Amount");
+            return;
+        }
+
+    
+
+
+    const pin = getInputValue("Pin-number");
+    if (pin === "1234") {
+        alert("congratulations ! cashout successful");
+        balanceElement.innerText =newBalance;
+        return newBalance
+    }
+    else {
+        alert("Enter valid pin ");
+        return;
+    }
+
+
+
+
 
 });
