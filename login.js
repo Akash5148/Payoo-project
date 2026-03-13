@@ -13,7 +13,7 @@ const pinNumber =document.getElementById("Pin-number");
 const pinValue =pinNumber.value;
 console.log(pinValue);
 
-if (contactNumber == "01712345678" && pinValue =="1234" )
+if ( pinValue =="1234" )
 {
     alert(" login successful");
     window.location="homepage.html"
