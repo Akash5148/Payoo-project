@@ -33,12 +33,16 @@ const addmoney =document.getElementById("add-money");
 const sendmoney =document.getElementById("Transfer-money")
 const paymoney =document.getElementById("pay-money")
 const transactions =document.getElementById("history")
+const bonass =document.getElementById("bonas")
 //hide the sectuin
  addmoney.classList.add("hidden");
  CashOut.classList.add("hidden");
  sendmoney.classList.add("hidden");
  paymoney.classList.add("hidden");
  transactions.classList.add("hidden");
+ bonass.classList.add("hidden");
+ 
+
  //show the cliked section
   const selected = document.getElementById(id);
    selected.classList.remove("hidden");
@@ -239,8 +243,47 @@ else{
 
 });
 
+// bonas part
+
+
+document.getElementById("bonas-btn").addEventListener("click",function(){
 
 
 
 
+    if(localStorage.getItem ("isBonasTaken"))
+    {
+        alert("You have already claimed your bonus today!");
+        return;
+    }
+const getCopun =document.getElementById("Copon");
+const getCopunValue =getCopun.value;
+if( getCopunValue==="payoo")
+{
+   
+    const newBalance =getBalance() + 100 ;
+    setBalanace(newBalance);
+
+    localStorage.setItem("isBonusTaken", "true");
+     alert("claimed the bonas $ 100");
+     this.disabled = true;
+
+
+     
+    const history =document.getElementById("history-container");
+
+const historyCard =document.createElement("div");
+historyCard.innerHTML =` <div class="card bg-base-100 w-fullmb-10  rounded-2xl p-5 bg-blue-300 ">
+<p>Congratulations!</p> 
+<p>  You have claimed the $100 bonus.
+at ${new Date()}</p></div>
+`
+history.appendChild(historyCard);
+}
+else{
+    alert("Invalid Copun"); return;
+}
+
+
+});
 
